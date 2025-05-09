@@ -38,9 +38,8 @@ public class RedDeAguaPotable {
 			min = caudal;
 		}
 		else {
-			List<GeneralTree<Character>> hijos = ag.getChildren();
-			caudal = caudal / hijos.size();
-			Iterator<GeneralTree<Character>> iterador = hijos.iterator(); 
+			caudal = caudal / ag.getChildren().size();
+			Iterator<GeneralTree<Character>> iterador = ag.getChildren().iterator(); 
 			while (iterador.hasNext()) {
 				min = Math.min(min, (caudalRecursivo(iterador.next(),caudal)));
 			}     

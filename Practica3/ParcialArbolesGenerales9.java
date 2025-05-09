@@ -42,15 +42,17 @@ public class ParcialArbolesGenerales9 {
 		while ((aux == true) && (!cola.isEmpty())) {
 			GeneralTree<Integer> ag = cola.dequeue();
 			int min = Integer.MAX_VALUE;
-			if (ag.isLeaf()) 
-			  min = ag.getData();
-		    else {
-			  List <GeneralTree<Integer>> hijos = ag.getChildren();
-			  for (GeneralTree<Integer> h : hijos) {
-				 if (h.getData() < min) {
-					  min = h.getData();
-				 }
-			      cola.enqueue(h);
+			if (!ag.isLeaf()) {
+				Iterator <GeneralTree<Integer>>it = ag.getChildren().iterator();
+				while ((aux) && (it.hasNext())) {
+					GeneralTree<Integer> hijo = it.next();
+				
+				    if (hijo.getData() < min) {
+					    min = hijo.getData();
+					    if (min < ag.getData())
+						  aux = false;
+				    }
+			        cola.enqueue(hijo);
 			   }
 			}
 		}
@@ -70,7 +72,7 @@ public class ParcialArbolesGenerales9 {
         
         List <GeneralTree<Integer>> subChildren1 = new LinkedList <GeneralTree<Integer>>();
         subChildren1.add(new GeneralTree<Integer>(35));
-        subChildren1.add(new GeneralTree<Integer>(83));
+        subChildren1.add(new GeneralTree<Integer>(33));
         subChildren1.add(new GeneralTree<Integer>(12));
         subChildren1.add(new GeneralTree<Integer>(33));
         
