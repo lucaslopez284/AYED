@@ -15,8 +15,9 @@ public class CiudadLaPlata {
 			Vertex <String> arranco = null;
 			Vertex <String> termino = null;
 			
-			
-			for (Vertex<String> v: sitios.getVertices()) {
+			Iterator<Vertex<String>> it = sitios.getVertices().iterator();
+			while ((arranco == null || termino == null ) && (it.hasNext())) {
+				Vertex<String> v = it.next();
 				if (v.equals(arranco)) {
 					arranco = v;
 				}
@@ -37,6 +38,8 @@ public class CiudadLaPlata {
 		}
 		return resultado;
 	}
+	
+	
 	
 	private void auxiliar(Graph<String> sitios, Vertex <String> origen, Vertex <String>destino,
 			              List<Objeto> resultado, List<String> lista, int cuadras, boolean [] marcas  ) {

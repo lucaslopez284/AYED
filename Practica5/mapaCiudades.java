@@ -183,9 +183,12 @@ public class mapaCiudades {
 			 List <Edge<String>> aristas = grafo.getEdges(origen);
 			 for (Edge<String> vecino : aristas) {
 				 Vertex<String> v = vecino.getTarget();
-				 if(!marcas[v.getPosition()]) {
-					 int aux = total + vecino.getWeight();
-					 min = this.AuxiliarEj3(v, destino, camino, lista, aux, min, marcas);
+				 int aux = total + vecino.getWeight();
+				 if(!marcas[v.getPosition()] && aux < min) { 
+					 int nueMin = this.AuxiliarEj3(v, destino, camino, lista, aux, min, marcas);
+					 if (nueMin < min) {
+						 min = nueMin;
+					 }
 				 }
 				 
 			 }
